@@ -2,7 +2,7 @@ import React from "react";
 import { MapContainer, TileLayer } from "react-leaflet";
 import AddMarkers from "./AddMarkers";
 
-const Map = ({onOpen}) => {
+const Map = ({onOpen, info}) => {
   return (
     <MapContainer
       doubleClickZoom={false}
@@ -17,7 +17,7 @@ const Map = ({onOpen}) => {
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     />
-    <AddMarkers onOpen = {onOpen}/>
+    <AddMarkers onOpen = {onOpen} info={info}/>
     </MapContainer>
   );
 };

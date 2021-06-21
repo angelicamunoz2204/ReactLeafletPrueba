@@ -1,16 +1,8 @@
 import React, { useState } from "react";
 import { Marker, Popup, useMapEvents } from "react-leaflet";
 
-const AddMarkers = ({onOpen}) => {
-  const [markers, setMarkers] = useState([
-    {
-      lat: 7.11392,
-      lng: -73.1198
-    }
-  ]);
-
-  const [popUp, setPopUp] = useState(false);
-
+const AddMarkers = ({onOpen, info}) => {
+  const [markers, setMarkers] = useState([]);
 
   const map = useMapEvents({
     click: (e) => {
@@ -19,11 +11,18 @@ const AddMarkers = ({onOpen}) => {
       onOpen();
     }
   });
+  
   return (
     <div>
       {markers.map((marker, i) => (
         <Marker key={`marker-${i}`} position={marker}>
-
+            <Popup>
+               Información del Pozo<br/> 
+               Latitud: {marker.lat}<br/> 
+               Longitud:{marker.lng}<br/> 
+               Código: {info[i].id}<br/> 
+               Tipo:{info[i].tipo} 
+            </Popup>
         </Marker>
       ))} 
     </div>
